@@ -28,7 +28,6 @@ void ConvCompute::PrepareForRun() {
 
   // ====================================================
   zynqmp::ConvParam& conv_param = pe_.param();
-
   param.output->mutable_data<float16>();
 
   filter_.setDataType(zynqmp::FP32);
@@ -49,17 +48,7 @@ void ConvCompute::PrepareForRun() {
 void ConvCompute::Run() { 
   auto& param = this->Param<param_t>();
   zynqmp::ConvParam& conv_param = pe_.param();
-
-  // conv_param.input->saveToFile("conv_input.txt");
-  // param.filter->ZynqTensor()->saveToFile("filter.txt");
-  // param.bias->ZynqTensor()->saveToFile("bias.txt");
-  // conv_param.input->scale()[0] = 1.0 / 127;
-  // conv_param.input->scale()[1] = 127;
-  
   pe_.dispatch();
-  // conv_param.output->saveToFile("conv_output.txt");
-
-  // exit(-1);
 }
 
 }  // namespace fpga

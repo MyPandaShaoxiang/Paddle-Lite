@@ -35,8 +35,6 @@ void SoftmaxCompute::PrepareForRun() {
 
 void SoftmaxCompute::Run() {
   pe_.dispatch();
-  zynqmp::SoftmaxParam& softmax_param = pe_.param();
-  softmax_param.output->saveToFile("softmax.txt");
 }
 
 }  // namespace fpga
